@@ -1,5 +1,5 @@
 const Main = () => {
-	return <div>TeleTeam - Telegram - WebApp</div>
+	return <div>Main page</div>
 }
 
 export default Main

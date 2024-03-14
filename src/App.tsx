@@ -1,9 +1,26 @@
 import { useEffect } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.scss'
-import Header from './components/Header/Header'
 import Main from './components/Main/Main'
+import UpdateTask from './components/Task/UpdateTask'
 import { useTelegram } from './hooks/useTelegram'
+import MainLayout from './layouts/MainLayout'
+
+const router = createBrowserRouter([
+	{
+		element: <MainLayout />,
+		children: [
+			{
+				path: '/',
+				element: <Main />,
+			},
+			{
+				path: '/updateTask',
+				element: <UpdateTask />,
+			},
+		],
+	},
+])
 
 function App() {
 	const { tg } = useTelegram()
@@ -14,11 +31,7 @@ function App() {
 
 	return (
 		<div className={'wrapper'}>
-			<Header />
-			<Routes>
-				<Route index element={<Main />} />
-				<Route path={'/form'} element={<div>Форма редактирования</div>} />
-			</Routes>
+			<RouterProvider router={router} />
 		</div>
 	)
 }
