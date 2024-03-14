@@ -1,8 +1,11 @@
 import { useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.scss'
+import Header from './components/Header/Header'
 import { useTelegram } from './hooks/useTelegram'
+
 function App() {
-	const { tg, user, onClose } = useTelegram()
+	const { tg } = useTelegram()
 
 	useEffect(() => {
 		tg.ready()
@@ -10,13 +13,11 @@ function App() {
 
 	return (
 		<div className={'wrapper'}>
-			<div className={'header'}>
-				<div>Hello {user?.username}!</div>
-				<div>
-					<button onClick={onClose}>Закрыть WebApp</button>
-				</div>
-			</div>
-			<div>TeleTeam - Telegram - WebApp</div>
+			<Header />
+			<Routes>
+				<Route index element={<div>TeleTeam - Telegram - WebApp</div>} />
+				<Route path={'/form'} element={<div>Форма редактирования</div>} />
+			</Routes>
 		</div>
 	)
 }

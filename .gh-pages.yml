@@ -1,3 +1,5 @@
 redirects:
   redirect_to: index.html
   try_files: true
+  redirect_from:
+    - /*
