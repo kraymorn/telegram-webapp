@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import './App.scss'
 import Header from './components/Header/Header'
+import Main from './components/Main/Main'
 import { useTelegram } from './hooks/useTelegram'
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
 		<div className={'wrapper'}>
 			<Header />
 			<Routes>
-				<Route index element={<div>TeleTeam - Telegram - WebApp</div>} />
+				<Route index element={<Main />} />
 				<Route path={'/form'} element={<div>Форма редактирования</div>} />
 			</Routes>
 		</div>
